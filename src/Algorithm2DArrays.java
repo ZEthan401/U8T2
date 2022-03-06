@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Algorithm2DArrays
 {
     public class Algorithm2DArrays
@@ -11,24 +13,137 @@ public class Algorithm2DArrays
          *  @return  true if target is found at least once in arr; false otherwise
          */
         public static boolean isFound(int[][] arr, int target)
-        { /* implement this method! */ }
+        {
+            for (int[] row : arr)
+            {
+                for (int val : row)
+                {
+                    if (val == target)
+                    {
+                        return true;
+                    }
+                }
+            }
+        return false;
+    }
 
         public static int countElementsWithSubstring(String[][] arr, String searchStr)
 
-        { /* implement this method! */ }
+        {
+            int count = 0;
+
+            for (String[] row : arr)
+            {
+                for (String str : row)
+                {
+                    if (str.indexOf(searchStr) != -1)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
 
         public static int replaceEvensWithZero(int[][] arr)
-        { /* implement this method! */ }
+        {
+            int changes = 0;
 
-        public static int sumForColumn(int[][] arr, int col)
-        { /* implement this method! */ }
+            for (int row = 0; row < arr.length; row++)
+            {
+                for (int col = 0; col < arr[0].length; col++)
+                {
+                    int element = arr[row][col];
+
+                    if (element % 2 == 0)
+                    {
+                        arr[row][col] = 0;
+                        changes++;
+                    }
+                }
+            }
+            return changes;
+        }
+    }
+    public static int sumForRow(int[][] arr, int row)
+    {
+        int sum = 0;
+
+        for (int col = 0; col < arr[0].length; col++)
+        {
+            sum += arr[row][col];
+        }
+        return sum;
+    }
+
+
+    public static int sumForColumn(int[][] arr, int col)
+        {
+            int sum = 0;
+
+            for (int row = 0; row < arr.length; row++)
+            {
+                sum += arr[row][col];
+            }
+            return sum;
+        }
 
         public static int[][] printNumberGrid(int rows, int cols)
-        { /* implement this method! */ }
+        {
+            int[][] numGrid = new int[rows][cols];
+
+            int counter = 0;
+
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    numGrid[row][col] = counter;
+
+                    System.out.print(numGrid[row][col] + " ");
+
+                    counter++;
+                }
+                System.out.println();
+            }
+            return numGrid;
+        }
 
         public static String[][] gridOfXandO(int n)
-        { /* implement this method! */ }
+        {
+            String[][] XOgrid = new String[n][n];
+
+            for (int row = 0; row < n; row++)
+            {
+                for (int col = 0; col < n; col++)
+                {
+                    if ((row + col) % 2 == 0)
+                    {
+                        XOgrid[row][col] = "X";
+                    }
+                    else
+                    {
+                        XOgrid[row][col] = "O";
+                    }
+                }
+            }
+            return XOgrid;
+        }
 
         public static ArrayList<String> findStringsOfLength(String[][] wordChart, int len)
-        { /* implement this method! */ }
+        {
+            ArrayList<String> returnList = new ArrayList<String>();
+
+            for (String[] row : wordChart)
+            {
+                for (String str : row)
+                {
+                    if (str.length() == len)
+                    {
+                        returnList.add(str);
+                    }
+                }
+            }
+            return returnList;
+        }
     }
